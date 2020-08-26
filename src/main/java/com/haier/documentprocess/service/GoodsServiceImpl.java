@@ -27,9 +27,15 @@ public class GoodsServiceImpl implements GoodsService{
     }
 
     @Override
+    public List<TGoods> getAll() {
+        return goodsDao.selectAll();
+    }
+
+    //起始索引offset小于0时默认读取第一条数据
+    @Override
     public List<TGoods> getListByPage(Integer pageNum) {
-        Integer beginIndex = (pageNum-1)*50000+1;
-        List<TGoods> result = goodsDao.selectByRowBounds(new TGoods(),new RowBounds(beginIndex, 50000));
+        Integer beginIndex = (pageNum-1)*2;
+        List<TGoods> result = goodsDao.selectByRowBounds(new TGoods(),new RowBounds(beginIndex, 2));
         return result;
     }
 }

@@ -11,5 +11,6 @@ import java.util.List;
  */
 public interface GoodsService {
     public Integer getCount();
+    public List<TGoods> getAll();
     public List<TGoods> getListByPage(Integer pageon);
 }
