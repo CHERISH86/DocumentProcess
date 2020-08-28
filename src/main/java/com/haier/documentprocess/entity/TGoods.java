@@ -1,7 +1,6 @@
 package com.haier.documentprocess.entity;
 
 import com.alibaba.excel.annotation.ExcelProperty;
-import com.alibaba.excel.annotation.write.style.ColumnWidth;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,26 +8,39 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
+
 @Data
 @Getter
 @Setter
 public class TGoods {
-  @ExcelProperty(index = 0,value = "商品id")
-  private String id;
+  public TGoods(){
+  }
 
-  @ExcelProperty(index = 1,value = "商品名称")
+  public TGoods(int id, String name, double cost, double price, Date manufactureDate,String serialNumber){
+    this.id = id;
+    this.name = name;
+    this.cost = cost;
+    this.price = price;
+    this.manufactureDate = manufactureDate;
+    this.serialNumber = serialNumber;
+  }
+
+//  @ExcelProperty(index = 0)
+  private Integer id;
+
+//  @ExcelProperty(index = 1)
   private String name;
 
-  @ExcelProperty(index = 2,value = "成本")
-  private String cost;
+//  @ExcelProperty(index = 2)
+  private Double cost;
 
-  @ExcelProperty(index = 3,value = "价格")
-  private String price;
+//  @ExcelProperty(index = 3)
+  private Double price;
 
-  //@DateTimeFormat(pattern = "yyyy/MM/dd")
-  @ExcelProperty(index = 4,value = "生产日期")
-  private String manufactureDate;
+//  @DateTimeFormat(pattern = "yyyy年MM月dd日")
+//  @ExcelProperty(index = 4)
+  private Date manufactureDate;
 
-  @ExcelProperty(index = 5,value = "商品编号")
+//  @ExcelProperty(index = 5)
   private String serialNumber;
 }

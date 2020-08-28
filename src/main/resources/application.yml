@@ -7,3 +7,6 @@ spring:
     url: jdbc:mysql://localhost:3306/excelprocess?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: 156130
+mybatis:
+  mapper-locations: classpath*:mapper/*.xml
+  type-aliases-package: com.haier.documentprocess.entity

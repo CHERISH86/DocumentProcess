@@ -10,7 +10,9 @@ import java.util.List;
  * @description
  */
 public interface GoodsService {
-    public Integer getCount();
-    public List<TGoods> getAll();
-    public List<TGoods> getListByPage(Integer pageon);
+    Integer getCount();
+    List<TGoods> getAll();
+    List<TGoods> getListByPage(Integer pageon);
+    int insertSelective(TGoods tGoods);
+    int insertList(List<TGoods> tGoodsList);
 }

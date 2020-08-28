@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.haier.documentprocess.dao.GoodsDao">
+    <insert id="insertList" parameterType="java.util.List">
+        insert into t_goods(id,name,cost,price,manufacture_date,serial_number)
+        values
+        <!--item是List里每一项的对象名，“，”分割每一条数据，以“；”结尾-->
+        <foreach collection="list" item="item" index="index" separator="," close=";">
+            (#{item.id},
+             #{item.name},
+             #{item.cost},
+             #{item.price},
+             #{item.manufactureDate},
+             #{item.serialNumber})
+        </foreach>
+    </insert>
+</mapper>

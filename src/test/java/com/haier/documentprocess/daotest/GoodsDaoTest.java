@@ -8,9 +8,13 @@ import com.haier.documentprocess.dao.GoodsDao;
 import com.haier.documentprocess.entity.TGoods;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.RowBounds;
+import org.apache.poi.ss.formula.functions.T;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -48,7 +52,7 @@ public class GoodsDaoTest extends DocumentProcessApplicationTests {
     }
 
     /**
-     * @description 从数据库中读取复杂类型数据：生产日期、商品编号、布尔类型
+     * @description 从数据库中读取复杂类型数据：生产日期、商品编号
      */
     @Test
     public void readAllTest(){
@@ -56,5 +60,20 @@ public class GoodsDaoTest extends DocumentProcessApplicationTests {
         for (TGoods goods : result){
             log.info("商品信息(包含日期等)：" + goods);
         }
+    }
+
+    /**
+     * @description 接口测试 向数据库批量插入数据
+     */
+    @Test
+    public void addGoodsByListTest(){
+        List<TGoods> goodsList = new ArrayList<>();
+        //SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date(System.currentTimeMillis());
+        TGoods goods1 = new TGoods(5006,"高宪龙",23,34,date,"lo093733");
+        TGoods goods2 = new TGoods(5007,"高宪龙",224,343,date,"lo093744");
+        goodsList.add(goods1);
+        goodsList.add(goods2);
+        goodsDao.insertList(goodsList);
     }
 }
