@@ -7,6 +7,13 @@ spring:
     url: jdbc:mysql://localhost:3306/excelprocess?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
     password: 156130
+#    url: jdbc:mysql://rm-m5eqd9cju0wl3f26w.mysql.rds.aliyuncs.com:3306/practice?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai
+#    username: practice
+#    password: e83hGL!buc
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 400MB
 mybatis:
   mapper-locations: classpath*:mapper/*.xml
   type-aliases-package: com.haier.documentprocess.entity

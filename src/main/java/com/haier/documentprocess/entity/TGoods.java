@@ -1,46 +1,51 @@
 package com.haier.documentprocess.entity;
 
+import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
+import com.alibaba.excel.annotation.format.DateTimeFormat;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
-
+/**
+ * @author cherish
+ * @date 2020/8/20
+ * @description
+ */
 @Data
 @Getter
 @Setter
-public class TGoods {
-  public TGoods(){
-  }
+public class TGoods{
+    public TGoods() {
+    }
 
-  public TGoods(int id, String name, double cost, double price, Date manufactureDate,String serialNumber){
-    this.id = id;
-    this.name = name;
-    this.cost = cost;
-    this.price = price;
-    this.manufactureDate = manufactureDate;
-    this.serialNumber = serialNumber;
-  }
+    public TGoods(int id, String name, double cost, double price, Date manufactureDate, String serialNumber) {
+        this.id = id;
+        this.name = name;
+        this.cost = cost;
+        this.price = price;
+        this.manufactureDate = manufactureDate;
+        this.serialNumber = serialNumber;
+    }
 
-//  @ExcelProperty(index = 0)
-  private Integer id;
+    @ExcelIgnore
+    private Integer id;
 
-//  @ExcelProperty(index = 1)
-  private String name;
+    @ExcelProperty(index = 0)
+    private String name;
 
-//  @ExcelProperty(index = 2)
-  private Double cost;
+    @ExcelProperty(index = 1)
+    private Double cost;
 
-//  @ExcelProperty(index = 3)
-  private Double price;
+    @ExcelProperty(index = 2)
+    private Double price;
 
-//  @DateTimeFormat(pattern = "yyyy年MM月dd日")
-//  @ExcelProperty(index = 4)
-  private Date manufactureDate;
+    @DateTimeFormat("yyyy-MM-dd")
+    @ExcelProperty(index = 3)
+    private Date manufactureDate;
 
-//  @ExcelProperty(index = 5)
-  private String serialNumber;
+    @ExcelProperty(index = 4)
+    private String serialNumber;
 }

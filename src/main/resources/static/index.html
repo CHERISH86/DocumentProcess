@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<head>
+    <title>文件的上传和下载</title>
+</head>
+<body>
+文件上传：
+    <form action="/goods" method="post" enctype="multipart/form-data">
+        <br>
+        <input type="file" name="file"/>
+        <br>
+        <br>
+        <input type="submit" value="读取excel"/>
+    </form>
+    <br>
+文件下载：
+    <form action="/goods" method="get" enctype="multipart/form-data">
+        <br>
+        <input type="submit" value="写入excel">
+    </form>
+</body>
+</html>

@@ -12,7 +12,6 @@ import java.util.List;
 public interface GoodsService {
     Integer getCount();
     List<TGoods> getAll();
-    List<TGoods> getListByPage(Integer pageon);
-    int insertSelective(TGoods tGoods);
+    List<TGoods> getListByPage(Integer pageon,Integer pageDatasCount);
     int insertList(List<TGoods> tGoodsList);
 }

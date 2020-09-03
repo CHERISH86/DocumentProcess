@@ -6,12 +6,11 @@ import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.read.metadata.ReadSheet;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import com.haier.documentprocess.DocumentProcessApplicationTests;
+import com.haier.documentprocess.controller.ExcelController;
 import com.haier.documentprocess.entity.TGoods;
 import com.haier.documentprocess.listener.EasyExcelListener;
 import com.haier.documentprocess.service.GoodsService;
-import com.haier.documentprocess.service.GoodsServiceImpl;
 import com.haier.documentprocess.util.SetExcelUtil;
-import javafx.scene.effect.SepiaTone;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,15 +35,15 @@ public class GoodsServiceTest extends DocumentProcessApplicationTests {
     public void DB2Excel() {
         double begin = System.currentTimeMillis();
 
-        //获取总记录数，按每个sheet50000条进行分页
+        //获取总记录数，按每个sheet5000条进行分页
         int count = goodsService.getCount();
         int sheetNum = count % 5000 == 0 ? count / 5000 : count / 5000 + 1;
         String PATH = "C:\\Users\\20023648\\Desktop\\Excel文件\\Goods.xlsx";
 
         //EasyExcel构造器构造写法
-        ExcelWriter excelWriter = EasyExcel.write(PATH, TGoods.class).build();
+        ExcelWriter excelWriter = EasyExcel.write(PATH).build();
         for (int page = 1; page < sheetNum + 1; page++) {
-            List<TGoods> goodsListByPage = goodsService.getListByPage(page);
+            List<TGoods> goodsListByPage = goodsService.getListByPage(page, ExcelController.PAGE_DATA_COUNT);
             //每一页重新创建一个sheet
             WriteSheet sheet = EasyExcel.writerSheet(page, "第{" + page + "}页数据").build();
             //动态设置sheet标题
@@ -72,8 +71,8 @@ public class GoodsServiceTest extends DocumentProcessApplicationTests {
         //获取一个sheet
         //ReadSheet readSheet = EasyExcel.readSheet(0).build();
         for (ReadSheet readSheet:sheets){
-            //设置sheet表头行数
-            readSheet.setHeadRowNumber(SetExcelUtil.headRowNumber);
+            //设置sheet表头行数 对应复杂表头
+            readSheet.setHeadRowNumber(SetExcelUtil.HEAD_ROW_NUMBER);
             excelReader.read(readSheet);
         }
         excelReader.finish();
