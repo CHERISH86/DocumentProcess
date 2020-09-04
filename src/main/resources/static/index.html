@@ -3,21 +3,29 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <head>
     <title>文件的上传和下载</title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-文件上传：
-    <form action="/goods" method="post" enctype="multipart/form-data">
-        <br>
-        <input type="file" name="file"/>
+<div style="text-align: center;" class="text">
         <br>
         <br>
-        <input type="submit" value="读取excel"/>
-    </form>
-    <br>
-文件下载：
-    <form action="/goods" method="get" enctype="multipart/form-data">
         <br>
-        <input type="submit" value="写入excel">
-    </form>
+        <a>文件上传：</a>
+        <form action="/goods" method="post" enctype="multipart/form-data">
+            <br>
+            <input type="file" name="file"/>
+            <br>
+            <br>
+            <input type="submit" value="读取excel"/>
+        </form>
+        <br>
+        <br>
+        <a>文件下载：</a>
+        <form action="/goods" method="get" enctype="multipart/form-data">
+            <br>
+            <input type="submit" value="写入excel"/>
+        </form>
+</div>
+
 </body>
 </html>

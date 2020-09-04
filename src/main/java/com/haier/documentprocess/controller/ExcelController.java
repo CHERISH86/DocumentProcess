@@ -68,7 +68,7 @@ public class ExcelController {
         for (int page=1; page<pages+1; page++){
             allGoods.addAll(goodsService.getListByPage(page, PAGE_DATA_COUNT));
             double readTime = (System.currentTimeMillis()-begin)/1000;
-            log.info("读取" +min(page* PAGE_DATA_COUNT,count)+ "条数据用时："+ readTime+"s");
+            log.info("读取数据库" +min(page* PAGE_DATA_COUNT,count)+ "条数据用时："+ readTime+"s");
         }
         double getDataTime = System.currentTimeMillis();
         log.info("******读取数据成功！用时：" + (getDataTime - begin) / 1000 + "s******");
